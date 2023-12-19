@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "73157383007",
+    "project_id": "newdemo-2de7c",
+    "storage_bucket": "newdemo-2de7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73157383007:android:ab8492d05ceb3779f35cea",
+        "android_client_info": {
+          "package_name": "com.example.firestore_bsp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD6JvkE4M3nAFM1w9OiEry9q4bNtQ3GU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
