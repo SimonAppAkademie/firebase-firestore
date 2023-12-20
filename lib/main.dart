@@ -57,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Future<void> SignOutFromGoogle() async {
       final GoogleSignIn googleSignIn = GoogleSignIn();
       await googleSignIn.signOut();
+      await FirebaseAuth.instance.signOut();
       print("signed out");
     }
 
