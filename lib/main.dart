@@ -54,6 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
       return await FirebaseAuth.instance.signInWithCredential(credential);
     }
 
+    Future<void> SignOutFromGoogle() async {
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+      await googleSignIn.signOut();
+      print("signed out");
+    }
+
     void addUserToDatabase() {
       // Instanz holen
       var db = FirebaseFirestore.instance;
@@ -84,6 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(onPressed: addUserToDatabase, child: Text("Add User To DB")),
             ElevatedButton(onPressed: readUserFromDatabase, child: Text("read data")),
             ElevatedButton(onPressed: signInWithGoogle, child: Text("Sign in with Google")),
+            ElevatedButton(onPressed: SignOutFromGoogle, child: Text("Sign out")),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
