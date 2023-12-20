@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firestore_bsp/firebase_options.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,6 +46,14 @@ class _MyHomePageState extends State<MyHomePage> {
       "preis": "23",
     };
 
+    Future<UserCredential> signInWithGoogle() async {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+      final credential = GoogleAuthProvider.credential(accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+      // return creds
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    }
+
     void addUserToDatabase() {
       // Instanz holen
       var db = FirebaseFirestore.instance;
@@ -73,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             ElevatedButton(onPressed: addUserToDatabase, child: Text("Add User To DB")),
             ElevatedButton(onPressed: readUserFromDatabase, child: Text("read data")),
+            ElevatedButton(onPressed: signInWithGoogle, child: Text("Sign in with Google")),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
